@@ -1,0 +1,58 @@
+-- Ch2 Assignment - Setup SQL
+-- Dave Snyder CIS-322-001
+
+
+DROP TABLE invoice_line CASCADE CONSTRAINTS;
+DROP TABLE invoice CASCADE CONSTRAINTS;
+DROP TABLE customer CASCADE CONSTRAINTS;
+DROP TABLE representatives CASCADE CONSTRAINTS;
+DROP TABLE department CASCADE CONSTRAINTS;
+
+CREATE TABLE department
+(department_code VARCHAR2(3),
+department_name VARCHAR2(15),
+department_location VARCHAR2(15),
+CONSTRAINT dep_department_code_pk PRIMARY KEY(department_code));
+
+CREATE TABLE representatives
+(rep_code VARCHAR2(3),
+department_code VARCHAR2(3),
+rep_lname VARCHAR2(15),
+CONSTRAINT rep_rep_code_pk PRIMARY KEY(rep_code),
+CONSTRAINT rep_department_code_fk FOREIGN KEY(department_code)
+REFERENCES department(department_code));
+
+CREATE TABLE customer
+(cust_code VARCHAR2(5),
+cust_name VARCHAR2(30),
+cust_address VARCHAR2(30),
+CONSTRAINT cust_cust_code_pk PRIMARY KEY(cust_code));
+
+CREATE TABLE invoice
+(inv_number NUMBER(10),
+rep_code VARCHAR2(3),
+cust_code VARCHAR2(5),
+inv_amount NUMBER(6,2),
+CONSTRAINT invoice_inv_number_pk PRIMARY KEY(inv_number),
+CONSTRAINT invoice_rep_code_fk FOREIGN KEY(rep_code)
+REFERENCES representatives(rep_code),
+CONSTRAINT invoice_cust_code_fk FOREIGN KEY(cust_code)
+REFERENCES customer(cust_code));
+
+CREATE TABLE invoice_line
+(inv_number NUMBER(10),
+inv_line_num NUMBER(5),
+item_code VARCHAR2(5),
+CONSTRAINT inv_line_inv_number_line_pk PRIMARY KEY(inv_number, inv_line_num),
+CONSTRAINT inv_line_inv_number_fk FOREIGN KEY(inv_number)
+REFERENCES invoice(inv_number));
+
+DESCRIBE department;
+
+DESCRIBE representatives;
+
+DESCRIBE customer;
+
+DESCRIBE invoice;
+
+DESCRIBE invoice_line;

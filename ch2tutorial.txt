@@ -1,0 +1,25 @@
+CREATE TABLE location
+(loc_id NUMBER(6),
+bldg_code VARCHAR2(10),
+room VARCHAR2(6),
+capacity NUMBER(5),
+CONSTRAINT location_loc_id_pk PRIMARY KEY (loc_id));
+
+CREATE TABLE faculty
+(f_id NUMBER(6),
+f_last VARCHAR2(30),
+f_first VARCHAR2(30),
+f_mi CHAR(1),
+loc_id NUMBER(5),
+f_phone VARCHAR2(10),
+f_rank VARCHAR2(8),
+f_super NUMBER(6),
+f_pin NUMBER(4),
+f_image BLOB,
+CONSTRAINT faculty_f_id_pk PRIMARY KEY(f_id),
+CONSTRAINT faculty_loc_id_fk FOREIGN KEY (loc_id)
+REFERENCES location(loc_id));
+
+SELECT constraint_name, table_name, constraint_type
+FROM user_constraints
+WHERE table_name = 'FACULTY';
