@@ -1,0 +1,90 @@
+/* Dave Snyder
+   Chapter 3 Tutorial
+   CIS-322-001
+*/
+
+/* p.90 */
+INSERT INTO location
+VALUES (9, 'BUS', '424', 1);
+
+/* p.91 */
+INSERT INTO faculty (F_ID, F_LAST, F_FIRST, F_MI, LOC_ID)
+VALUES (1, 'Marx', 'Teresa', 'J', 9);
+
+/* p.95 */
+INSERT INTO student
+VALUES ('JO100', 'Jones', 'Tammy', 'R', '1817 Eagleridge Circle', 'Tallahassee',
+'FL', '32811', '7155559876', 'SR', TO_DATE('07/14/1985', 'MM/DD/YYYY'), '8891',
+1, TO_YMINTERVAL('3-2'));
+
+/* p.96 */
+INSERT INTO faculty (F_ID, F_LAST, F_FIRST, F_IMAGE)
+VALUES (2, 'Zhulin', 'Mark', EMPTY_BLOB());
+
+/* p.97 */
+COMMIT;
+
+/* p.102-103 */
+UPDATE faculty
+SET f_rank = 'FULL'
+WHERE f_id = 1;
+
+/* p.104 */
+DELETE FROM student
+WHERE s_first = 'Tammy'
+AND s_last = 'Jones';
+
+/* p.104-105 */
+DELETE FROM location
+WHERE loc_id = 9;
+
+/* p.106 */
+ALTER TABLE faculty
+DISABLE CONSTRAINT faculty_loc_id_fk;
+
+ALTER TABLE course_section
+DISABLE CONSTRAINT course_section_loc_id_fk;
+
+TRUNCATE TABLE location
+
+/* p.108 */
+CREATE SEQUENCE loc_id_sequence
+START WITH 20;
+
+/* p.109 */
+SELECT sequence_name
+FROM user_sequences;
+
+/* p.110 */
+INSERT INTO location VALUES
+(loc_id_sequence.NEXTVAL, 'CR', '105', 150);
+
+SELECT * FROM location;
+
+/* p.111 */
+SELECT loc_id_sequence.NEXTVAL
+FROM DUAL;
+
+SELECT loc_id_sequence.CURRVAL
+FROM DUAL;
+
+/* p.112 */
+SELECT loc_id_sequence.NEXTVAL
+FROM DUAL;
+
+SELECT loc_id_sequence.CURRVAL
+FROM DUAL;
+
+/* p.113 */
+GRANT SELECT, ALTER
+ON student
+TO scott;
+
+GRANT ALL
+ON loc_id_sequence
+TO PUBLIC;
+
+/* p.114 */
+REVOKE SELECT, ALTER
+ON student
+FROM scott;
