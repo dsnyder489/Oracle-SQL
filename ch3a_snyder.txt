@@ -308,7 +308,7 @@ VALUES(ORDERS_ID_SEQ.NEXTVAL,
   4,
   3);
 
-/* Task 3 */
+/* Task 3 - Created Rows Verification and Commit*/
 SELECT * FROM CUSTOMER;
 
 SELECT * FROM ORDER_SOURCE;
@@ -317,45 +317,45 @@ SELECT * FROM ORDERS;
 
 COMMIT;
 
-/* Task 4 */
+/* Task 4 - Remove Customer */
 DELETE FROM CUSTOMER
 WHERE C_ID = 5;
 
 ALTER TABLE ORDERS
 DISABLE CONSTRAINT ORDERS_C_ID_FK;
 
-/* Task 5 */
+/* Task 5 - Update Order */
 UPDATE ORDERS
 SET O_METHPMT = 'CA'
 WHERE O_ID = 1;
 
 SELECT * FROM ORDERS;
 
-/* Task 6 */
+/* Task 6 - Discard Changes - Rollback */
 ROLLBACK;
 
 SELECT * FROM CUSTOMER;
 
 SELECT * FROM ORDERS;
 
-/* Task 7 */
+/* Task 7 - Disable Constraint */
 ALTER TABLE ORDERS
 DISABLE CONSTRAINT ORDERS_C_ID_FK;
 
-/* TASK 8 */
+/* TASK 8 - Remove Customer Table Rows */
 DELETE FROM CUSTOMER;
 
 SELECT * FROM CUSTOMER;
 
-/* Task 9 */
+/* Task 9 - Rollback */
 ROLLBACK;
 
-/* Task 10 */
+/* Task 10 - Truncate */
 TRUNCATE TABLE CUSTOMER;
 
 SELECT * FROM CUSTOMER;
 
-/* Task 11 */
+/* Task 11 - Rollback */
 ROLLBACK;
 
 SELECT * FROM CUSTOMER;
