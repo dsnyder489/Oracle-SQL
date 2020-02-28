@@ -1,0 +1,361 @@
+/* Dave Snyder
+   Chapter 3A Assignment
+   CIS 322 001
+*/
+
+/* Task 1 - Create Sequences */
+CREATE SEQUENCE ORDERS_ID_SEQ
+START WITH 1
+INCREMENT BY 1
+NOCYCLE
+NOCACHE;
+
+CREATE SEQUENCE CUSTOMER_ID_SEQ
+START WITH 1
+INCREMENT BY 1
+NOCYCLE
+NOCACHE;
+
+/* Task 2 - Insert Records - CUSTOMER */
+INSERT INTO CUSTOMER(
+  C_ID,
+  C_LAST,
+  C_FIRST,
+  C_MI,
+  C_BIRTHDATE,
+  C_ADDRESS,
+  C_CITY,
+  C_STATE,
+  C_ZIP,
+  C_DPHONE,
+  C_EPHONE,
+  C_USERID,
+  C_PASSWORD)
+VALUES(CUSTOMER_ID_SEQ.NEXTVAL,
+  'Graham',
+  'Neal',
+  'R',
+  '10:DEC:1967',
+  '9815 Circle Dr.',
+  'Tallahassee',
+  'FL',
+  '32308',
+  '9045551897',
+  '9045558599',
+  'grahamn',
+  'barbiecar'
+  );
+
+INSERT INTO CUSTOMER(
+  C_ID,
+  C_LAST,
+  C_FIRST,
+  C_MI,
+  C_BIRTHDATE,
+  C_ADDRESS,
+  C_CITY,
+  C_STATE,
+  C_ZIP,
+  C_DPHONE,
+  C_EPHONE,
+  C_USERID,
+  C_PASSWORD)
+VALUES(CUSTOMER_ID_SEQ.NEXTVAL,
+  'Sanchez',
+  'Myra',
+  'T',
+  '14:AUG:1958',
+  '172 Alto Park',
+  'Seattle',
+  'WA',
+  '42180',
+  '4185551791',
+  '4185556643',
+  'sanchezmt',
+  'qwert5'
+  );
+
+INSERT INTO CUSTOMER(
+  C_ID,
+  C_LAST,
+  C_FIRST,
+  C_MI,
+  C_BIRTHDATE,
+  C_ADDRESS,
+  C_CITY,
+  C_STATE,
+  C_ZIP,
+  C_DPHONE,
+  C_EPHONE,
+  C_USERID,
+  C_PASSWORD)
+VALUES(CUSTOMER_ID_SEQ.NEXTVAL,
+  'Smith',
+  'Lisa',
+  'M',
+  '12:APR:1960',
+  '850 East Main',
+  'Santa Ana',
+  'CA',
+  '51875',
+  '3075557841',
+  '3075559852',
+  'smithlm',
+  'joshua5'
+  );
+
+INSERT INTO CUSTOMER(
+  C_ID,
+  C_LAST,
+  C_FIRST,
+  C_MI,
+  C_BIRTHDATE,
+  C_ADDRESS,
+  C_CITY,
+  C_STATE,
+  C_ZIP,
+  C_DPHONE,
+  C_EPHONE,
+  C_USERID,
+  C_PASSWORD)
+VALUES(CUSTOMER_ID_SEQ.NEXTVAL,
+  'Phelp',
+  'Paul',
+  '',
+  '18:JAN:1981',
+  '994 Kirkman Rd.',
+  'Northpoint',
+  'NY',
+  '11795',
+  '4825554788',
+  '4825558219',
+  'phelpp',
+  'hold98er'
+  );
+
+INSERT INTO CUSTOMER(
+  C_ID,
+  C_LAST,
+  C_FIRST,
+  C_MI,
+  C_BIRTHDATE,
+  C_ADDRESS,
+  C_CITY,
+  C_STATE,
+  C_ZIP,
+  C_DPHONE,
+  C_EPHONE,
+  C_USERID,
+  C_PASSWORD)
+VALUES(CUSTOMER_ID_SEQ.NEXTVAL,
+  'Lewis',
+  'Sheila',
+  'A',
+  '30:AUG:1978',
+  '195 College Blvd.',
+  'Newton',
+  'GA',
+  '37812',
+  '3525554972',
+  '3525551811',
+  'lewissa',
+  '125pass'
+  );
+
+INSERT INTO CUSTOMER(
+  C_ID,
+  C_LAST,
+  C_FIRST,
+  C_MI,
+  C_BIRTHDATE,
+  C_ADDRESS,
+  C_CITY,
+  C_STATE,
+  C_ZIP,
+  C_DPHONE,
+  C_EPHONE,
+  C_USERID,
+  C_PASSWORD)
+VALUES(CUSTOMER_ID_SEQ.NEXTVAL,
+  'James',
+  'Thomas',
+  'E',
+  '01:JUN:1973',
+  '348 Rice Lane',
+  'Radcliff',
+  'WY',
+  '87195',
+  '7615553485',
+  '7615553319',
+  'jamest',
+  'nok$tell'
+  );
+
+/* Task 2 - Insert Records - ORDER_SOURCE
+   (Started sequence for ORDER_SOURCE) */
+CREATE SEQUENCE ORDER_SOURCE_ID_SEQ
+START WITH 1
+INCREMENT BY 1
+NOCYCLE
+NOCACHE;
+
+INSERT INTO ORDER_SOURCE(
+  OS_ID,
+  OS_DESC)
+VALUES(ORDER_SOURCE_ID_SEQ.NEXTVAL,
+  'Winter 2005');
+
+INSERT INTO ORDER_SOURCE(
+  OS_ID,
+  OS_DESC)
+VALUES(ORDER_SOURCE_ID_SEQ.NEXTVAL,
+  'Spring 2006');
+
+INSERT INTO ORDER_SOURCE(
+  OS_ID,
+  OS_DESC)
+VALUES(ORDER_SOURCE_ID_SEQ.NEXTVAL,
+  'Summer 2006');
+
+INSERT INTO ORDER_SOURCE(
+  OS_ID,
+  OS_DESC)
+VALUES(ORDER_SOURCE_ID_SEQ.NEXTVAL,
+  'Outdoor 2006');
+
+INSERT INTO ORDER_SOURCE(
+  OS_ID,
+  OS_DESC)
+VALUES(ORDER_SOURCE_ID_SEQ.NEXTVAL,
+  'Cildren"s 2006');
+
+INSERT INTO ORDER_SOURCE(
+  OS_ID,
+  OS_DESC)
+VALUES(ORDER_SOURCE_ID_SEQ.NEXTVAL,
+  'Web Site');
+
+/* Task 2 - Insert Records - ORDERS */
+INSERT INTO ORDERS(
+  O_ID,
+  O_DATE,
+  O_METHPMT,
+  C_ID,
+  OS_ID)
+VALUES(ORDERS_ID_SEQ.NEXTVAL,
+  '29:MAY:2006',
+  'CC',
+  1,
+  2);
+
+INSERT INTO ORDERS(
+  O_ID,
+  O_DATE,
+  O_METHPMT,
+  C_ID,
+  OS_ID)
+VALUES(ORDERS_ID_SEQ.NEXTVAL,
+  '29:MAY:2006',
+  'CC',
+  5,
+  6);
+
+INSERT INTO ORDERS(
+  O_ID,
+  O_DATE,
+  O_METHPMT,
+  C_ID,
+  OS_ID)
+VALUES(ORDERS_ID_SEQ.NEXTVAL,
+  '31:MAY:2006',
+  'CHECK',
+  2,
+  2);
+
+INSERT INTO ORDERS(
+  O_ID,
+  O_DATE,
+  O_METHPMT,
+  C_ID,
+  OS_ID)
+VALUES(ORDERS_ID_SEQ.NEXTVAL,
+  '31:MAY:2006',
+  'CC',
+  3,
+  3);
+
+INSERT INTO ORDERS(
+  O_ID,
+  O_DATE,
+  O_METHPMT,
+  C_ID,
+  OS_ID)
+VALUES(ORDERS_ID_SEQ.NEXTVAL,
+  '01:JUN:2006',
+  'CC',
+  4,
+  6);
+
+INSERT INTO ORDERS(
+  O_ID,
+  O_DATE,
+  O_METHPMT,
+  C_ID,
+  OS_ID)
+VALUES(ORDERS_ID_SEQ.NEXTVAL,
+  '01:JUN:2006',
+  'CC',
+  4,
+  3);
+
+/* Task 3 */
+SELECT * FROM CUSTOMER;
+
+SELECT * FROM ORDER_SOURCE;
+
+SELECT * FROM ORDERS;
+
+COMMIT;
+
+/* Task 4 */
+DELETE FROM CUSTOMER
+WHERE C_ID = 5;
+
+ALTER TABLE ORDERS
+DISABLE CONSTRAINT ORDERS_C_ID_FK;
+
+/* Task 5 */
+UPDATE ORDERS
+SET O_METHPMT = 'CA'
+WHERE O_ID = 1;
+
+SELECT * FROM ORDERS;
+
+/* Task 6 */
+ROLLBACK;
+
+SELECT * FROM CUSTOMER;
+
+SELECT * FROM ORDERS;
+
+/* Task 7 */
+ALTER TABLE ORDERS
+DISABLE CONSTRAINT ORDERS_C_ID_FK;
+
+/* TASK 8 */
+DELETE FROM CUSTOMER;
+
+SELECT * FROM CUSTOMER;
+
+/* Task 9 */
+ROLLBACK;
+
+/* Task 10 */
+TRUNCATE TABLE CUSTOMER;
+
+SELECT * FROM CUSTOMER;
+
+/* Task 11 */
+ROLLBACK;
+
+SELECT * FROM CUSTOMER;
